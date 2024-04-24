@@ -46,9 +46,23 @@
   background-color: #45a049;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .form-container {
-    width: 90%;
-    padding: 15px;
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 40px;
   }
+  .heading{
+    font-size: 3rem;
+  }
+}
+
+
+/* inputcard.css */
+.success-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
 }
