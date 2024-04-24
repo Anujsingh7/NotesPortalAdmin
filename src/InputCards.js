@@ -264,7 +264,7 @@ const InputCard = () => {
             required
           />
 
-          <button type="submit">Add Card</button>
+          <button className="submit_btn" type="submit">Add Card</button>
         </form>
       </div>
 
