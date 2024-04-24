@@ -9,33 +9,21 @@ const FirebaseContext = createContext(null);
 export const useFirebase = () => useContext(FirebaseContext);
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_APIKEY,
-  authDomain: process.env.REACT_APP_AUTHDOMAIN,
-  projectId: process.env.REACT_APP_PROJECTID,
-  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGINGSTANDARDID,
-  appId: process.env.REACT_APP_APPID,
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSTANDARDID,
+  appId: process.env.REACT_APP_FIREBASE_APPID,
 };
 
+console.log(process.env.REACT_APP_FIREBASE_APPID)
 const firebaseApp = initializeApp(firebaseConfig);
 
 const firestore = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 
 const handleCreateStore = async (image, pdf, subject, branch, semester) => {
-  // const imageRef = ref(storage, `uploads/image/${Date.now()}-${image.name}`);
-  // const uploadResult = await uploadBytes(imageRef, image);
-  // const pdfRef = ref(storage, `uploads/pdf/${Date.now()}-${pdf.name}`);
-  // const uploadPdfResult = await uploadBytes(pdfRef, pdf);
-
-  // return await addDoc(collection(firestore, "notes"), {
-  //   imageURL: uploadResult.ref.fullPath,
-  //   pdfUrl: uploadPdfResult.ref.fullPath,
-  //   name,
-  //   subject,
-  //   branch,
-  // });
-
   const imageRef = ref(storage, `uploads/image/${Date.now()}-${image.name}`);
   const uploadImageResult = await uploadBytes(imageRef, image);
   const imageUrl = await getDownloadURL(imageRef);
